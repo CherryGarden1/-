@@ -16,6 +16,7 @@ public class Bullet : MonoBehaviour
 																 // rb.velocity = transform.forward * bulletSpeed;   // Unity 2023à»ëO
 		}
 
+
 		// 5ïbå„Ç…é©ìÆè¡ñ≈
 		Destroy(gameObject, 5f);
 	}
