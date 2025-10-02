@@ -33,7 +33,11 @@ public class AimAndShot : MonoBehaviour
 		if (dir.sqrMagnitude > 0.001f)
 		{
 			Quaternion targetRot = Quaternion.LookRotation(dir);
-			shipTransform.rotation = Quaternion.Slerp(shipTransform.rotation, targetRot, Time.deltaTime * turnSpeed);
+			//Y軸のみ回転
+			Vector3 euler = targetRot.eulerAngles;
+			shipTransform.rotation = Quaternion.Slerp(shipTransform.rotation,
+				Quaternion.Euler(shipTransform.eulerAngles.x, euler.y, shipTransform.eulerAngles.z),
+				, Time.deltaTime * turnSpeed);
 		}
 
 		// === マウス左クリックで弾を発射 ===
