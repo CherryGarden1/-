@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class AimAndShot : MonoBehaviour
 {
-	public Transform shipTransform; // �@��
+	public Transform shipTransform; //自機
 	public RectTransform crosshairUI;      // UI上のクロスヘア
-	public float turnSpeed = 2f;
-	public GameObject bulletPrefab;
-	public Transform firePoint;
+	public float turnSpeed = 2f;  //振り向き速度
+	public GameObject bulletPrefab;　//弾素材
+	public Transform firePoint; //発射位置
 	public Camera mainCamera;              // メインカメラ
 
 	void Update()
@@ -37,7 +37,7 @@ public class AimAndShot : MonoBehaviour
 			Vector3 euler = targetRot.eulerAngles;
 			shipTransform.rotation = Quaternion.Slerp(shipTransform.rotation,
 				Quaternion.Euler(shipTransform.eulerAngles.x, euler.y, shipTransform.eulerAngles.z),
-				, Time.deltaTime * turnSpeed);
+				 Time.deltaTime * turnSpeed);
 		}
 
 		// === マウス左クリックで弾を発射 ===
@@ -49,14 +49,26 @@ public class AimAndShot : MonoBehaviour
 
 	void ShootAt(Vector3 target)
 	{
+		Vector3 screenPos = crosshairUI.position;
+		Ray ray = mainCamera.ScreenPointToRay(screenPos);
+		Vector3 targetPos;
+
+		if (Physics.Raycast(ray, out RaycastHit hit, 1000f))
+			targetPos = hit.point;
+		else
+			targetPos = ray.origin + ray.direction * 1000f;
 		//弾を生成
-		GameObject b = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+		GameObject b = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 		//クロスヘアに向けて飛ばす
 		Vector3 velocityDir = (target - firePoint.position).normalized;
 		Rigidbody rb = b.GetComponent<Rigidbody>();
 		if (rb != null)
 		{
+			rb.useGravity = false; // 重力を無効化
+
+
 			rb.linearVelocity = velocityDir * 200f;
+			//rb.linearVelocity = velocityDir * 200f;
 		}
 	}
 }
