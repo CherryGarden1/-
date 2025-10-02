@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class AutoDestroy : MonoBehaviour
 {
 	//Á‚·‚Ü‚Å‚ÌŠÔ
 	public float time;
