@@ -7,7 +7,7 @@ public class PlayerMove : MonoBehaviour
 	private float speed;
 	[SerializeField]
 	private float scrollSpeed;
-	//レジとボディの確認
+	//リジットボディの確認
 	Rigidbody rb;
 	//アニメーションのコンポーネントの確認
 	//Animator animator;
