@@ -2,29 +2,27 @@ using UnityEngine;
 
 public class CameraFllow : MonoBehaviour
 {
-	[SerializeField]
-	private  int PlayerMove;
-	public Transform player; // プレイヤー
-	public Vector3 offset; //カメラの相対位置
 
+	[SerializeField] private Transform player;   // プレイヤー機体
+	[SerializeField] private Vector3 offset = new Vector3(0, 3f, -10f);
+	[SerializeField] private float smoothSpeed = 5f;
 
-	void Start()
+	void LateUpdate()
 	{
-		this.player = GetComponent<Transform>();
-		//unitychanの情報を取得
-		//this.player = GameObject.Find("playerTest");
+		if (player == null) return;
 
-		// MainCamera(自分自身)とplayerとの相対距離を求める
-		offset = transform.position - player.transform.position;
+		// 目標位置（プレイヤーから見て後ろ＆上にオフセット）
+		Vector3 targetPosition = player.position + offset;
 
-	}
+		// カメラをスムーズに追従
+		float t = Mathf.Clamp01(smoothSpeed * Time.deltaTime);
+		transform.position = Vector3.Lerp(transform.position, targetPosition, t);
 
-	// Update is called once per frame
-	void Update()
-	{
-
-		//新しいトランスフォームの値を代入する
-		transform.position = player.transform.position + offset;
+		// 注視するのは「プレイヤーの少し前方」
+		
+		transform.LookAt(player.position);
 
 	}
 }
+
+

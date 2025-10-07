@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class ScloolTest : MonoBehaviour
 {
-	[SerializeField] private GameObject scrollBlockObject;
-	[SerializeField] private Transform blockPopPoint;
-	[SerializeField] private Vector3 blockMoveForward = new Vector3(0, 0, 1);
-	[SerializeField] private int before_block_create_count = 5;
+	[SerializeField] private GameObject scrollBlockObject;//素材指定
+	[SerializeField] private Transform blockPopPoint;//生成位置
+	[SerializeField] private Vector3 blockMoveForward = new Vector3(0, 0, 1);//並ぶ方向
+	[SerializeField] private int before_block_create_count = 2;//最初の数
 
 	private Renderer beforeBlockRender;
 
@@ -14,9 +14,12 @@ public class ScloolTest : MonoBehaviour
 		// 最初に並べる
 		if (scrollBlockObject != null && before_block_create_count > 0)
 		{
+			//素材の大きさを取得
 			Renderer prefabRenderer = scrollBlockObject.GetComponent<Renderer>();
 			Vector3 blockSize = prefabRenderer.bounds.size;
 
+
+			//before_block_create_count個ブロックを並べてblockPopPointを基準に配置
 			for (int i = 0; i < before_block_create_count; i++)
 			{
 				Vector3 createPosition = blockPopPoint.position +
@@ -28,6 +31,7 @@ public class ScloolTest : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		//ブロックがなければ何もしない
 		if (beforeBlockRender == null) return;
 
 		// 最後に生成したブロックのBoundsを取得
