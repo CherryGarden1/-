@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ScloolTest : MonoBehaviour
 {
@@ -6,6 +8,7 @@ public class ScloolTest : MonoBehaviour
 	[SerializeField] private Transform blockPopPoint;//生成位置
 	[SerializeField] private Vector3 blockMoveForward = new Vector3(0, 0, 1);//並ぶ方向
 	[SerializeField] private int before_block_create_count = 2;//最初の数
+	[SerializeField] private Vector3 playerOffset;
 
 	private Renderer beforeBlockRender;
 
@@ -23,13 +26,13 @@ public class ScloolTest : MonoBehaviour
 			for (int i = 0; i < before_block_create_count; i++)
 			{
 				Vector3 createPosition = blockPopPoint.position +
-										 blockMoveForward.normalized * blockSize.z * i;
+										 playerOffset;
 				CreateBlock(createPosition);
 			}
 		}
 	}
 
-	private void FixedUpdate()
+	private void Update()
 	{
 		//ブロックがなければ何もしない
 		if (beforeBlockRender == null) return;
@@ -43,7 +46,7 @@ public class ScloolTest : MonoBehaviour
 		// blockPopPoint が最後のブロックの中にいない → 追加生成
 		if (!lastBounds.Contains(blockPopPoint.position))
 		{
-			CreateBlock(nextPosition);
+		
 		}
 	}
 
@@ -52,10 +55,24 @@ public class ScloolTest : MonoBehaviour
 		GameObject blockObject = Instantiate(scrollBlockObject, createPosition, scrollBlockObject.transform.rotation);
 
 		// 移動と削除を行うコンポーネント
-		blockObject.AddComponent<AutoDestroy>().time = 10f; // 少し長め
-		blockObject.AddComponent<ObjectTransform>().translate = blockMoveForward;
-
+		blockObject.AddComponent<AutoDestroy>().time = 30f; // 少し長め
+		//blockObject.AddComponent<ObjectTransform>().translate = blockMoveForward;
+		blockObject.transform.Translate(blockMoveForward, Space.World);
 		beforeBlockRender = blockObject.GetComponent<Renderer>();
+		blockObject.GetComponentInChildren<StageEnd>().NextStage += OnNextStage;
+	}
+
+	private void OnNextStage()
+	{
+		Debug.Log("Hello");
+		// 最後に生成したブロックのBoundsを取得
+		Bounds lastBounds = beforeBlockRender.bounds;
+
+		// 次のブロックの生成位置（Z方向に一つ分進める）
+		Vector3 nextPosition = lastBounds.center + blockMoveForward.normalized * lastBounds.size.z;
+
+		CreateBlock(nextPosition);
+
 	}
 }
 
