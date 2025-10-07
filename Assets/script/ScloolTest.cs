@@ -59,7 +59,7 @@ public class ScloolTest : MonoBehaviour
 		//blockObject.AddComponent<ObjectTransform>().translate = blockMoveForward;
 		blockObject.transform.Translate(blockMoveForward, Space.World);
 		beforeBlockRender = blockObject.GetComponent<Renderer>();
-		blockObject.GetComponentInChildren<StageEnd>().NextStage += OnNextStage;
+		blockObject.GetComponentIn<StageEnd>().NextStage += OnNextStage;
 	}
 
 	private void OnNextStage()

@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &107147771 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4852853009155374842, guid: 51b02180a4cbc2548a732ba7dc373477, type: 3}
+  m_PrefabInstance: {fileID: 814096624}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,7 +136,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
-  - component: {fileID: 330585548}
+  - component: {fileID: 330585549}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -207,7 +212,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: -8}
+  m_LocalPosition: {x: 0, y: 3, z: 50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -257,28 +262,21 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!1818360608 &330585548
-PositionConstraint:
+--- !u!114 &330585549
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   m_Enabled: 1
-  serializedVersion: 2
-  m_Weight: 0.5
-  m_TranslationAtRest: {x: 0, y: 4, z: -8}
-  m_TranslationOffset: {x: 0, y: 0, z: 0}
-  m_AffectTranslationX: 1
-  m_AffectTranslationY: 1
-  m_AffectTranslationZ: 1
-  m_Active: 1
-  m_IsLocked: 0
-  m_Sources:
-  - sourceTransform: {fileID: 0}
-    weight: 1
-  - sourceTransform: {fileID: 0}
-    weight: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed7741746cce0734a8ad9082917d7a29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 107147771}
+  offset: {x: 0, y: 0, z: -5}
+  smoothSpeed: 5
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,17 +414,25 @@ PrefabInstance:
       propertyPath: crosshairUI
       value: 
       objectReference: {fileID: 1760109185}
+    - target: {fileID: 3577873100781911035, guid: 51b02180a4cbc2548a732ba7dc373477, type: 3}
+      propertyPath: speed
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3577873100781911035, guid: 51b02180a4cbc2548a732ba7dc373477, type: 3}
+      propertyPath: scrollSpeed
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 4852853009155374842, guid: 51b02180a4cbc2548a732ba7dc373477, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4852853009155374842, guid: 51b02180a4cbc2548a732ba7dc373477, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.62
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4852853009155374842, guid: 51b02180a4cbc2548a732ba7dc373477, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4852853009155374842, guid: 51b02180a4cbc2548a732ba7dc373477, type: 3}
       propertyPath: m_LocalRotation.w
@@ -438,11 +444,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4852853009155374842, guid: 51b02180a4cbc2548a732ba7dc373477, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4852853009155374842, guid: 51b02180a4cbc2548a732ba7dc373477, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4852853009155374842, guid: 51b02180a4cbc2548a732ba7dc373477, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -559,9 +565,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollBlockObject: {fileID: 1694571446070824630, guid: e6fe5ffa15ecbee44a339c4734e6fd6e, type: 3}
-  blockPopPoint: {fileID: 5851573266602398381, guid: e6fe5ffa15ecbee44a339c4734e6fd6e, type: 3}
-  blockMoveForward: {x: 0, y: 0, z: 1}
-  before_block_create_count: 2
+  blockPopPoint: {fileID: 107147771}
+  blockMoveForward: {x: 0, y: 0, z: 500}
+  before_block_create_count: 1
+  playerOffset: {x: -180, y: -5, z: -50}
 --- !u!1 &1267974217
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,10 +847,10 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1733096054}
   - {fileID: 1267974221}
   - {fileID: 1009180419}
+  - {fileID: 330585546}
   - {fileID: 814096624}
