@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -59,7 +60,7 @@ public class ScloolTest : MonoBehaviour
 		//blockObject.AddComponent<ObjectTransform>().translate = blockMoveForward;
 		blockObject.transform.Translate(blockMoveForward, Space.World);
 		beforeBlockRender = blockObject.GetComponent<Renderer>();
-		blockObject.GetComponentIn<StageEnd>().NextStage += OnNextStage;
+		blockObject.GetComponentInChildren<StageEnd>().NextStage += OnNextStage;
 	}
 
 	private void OnNextStage()
