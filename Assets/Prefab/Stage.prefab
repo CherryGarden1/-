@@ -329,6 +329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 4852853009155374842, guid: 51b02180a4cbc2548a732ba7dc373477, type: 3}
-  EnemyPrefabs: []
+  EnemyPrefabs:
+  - {fileID: 475714075055116346, guid: 59b9be558d62a0a4396bddfa3b26a367, type: 3}
   SpawnDistanse: 10
   SpawnHeight: 5

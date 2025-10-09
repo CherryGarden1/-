@@ -19,7 +19,9 @@ public class TestEnemy : MonoBehaviour
 			if (transform.position.y <= 0.5f) // © ’n–Ê‚Ì‚‚³‚É‡‚í‚¹‚é
 			{
 				hasLanded = true;
+				Debug.Log("true2");
 			}
+			Debug.Log("true1");
 		}
 		else
 		{
@@ -28,7 +30,10 @@ public class TestEnemy : MonoBehaviour
 			{
 				Vector3 direction = (target.position - transform.position).normalized;
 				transform.position += direction * moveSpeed * Time.deltaTime;
+				Debug.Log("else1");
+
 			}
 		}
+		
 	}
 }

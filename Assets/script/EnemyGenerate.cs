@@ -26,6 +26,8 @@ public class EnemyGenerate : MonoBehaviour
 
 		GenerateEnemy(SpawnPos);
 		}
+		Generate?.Invoke();
+
 
 	}
 
