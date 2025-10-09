@@ -11,6 +11,7 @@ public class ScloolTest : MonoBehaviour
 	[SerializeField] private int before_block_create_count = 2;//最初の数
 	[SerializeField] private Vector3 playerOffset;
 
+
 	private Renderer beforeBlockRender;
 
 	void Start()
@@ -22,13 +23,24 @@ public class ScloolTest : MonoBehaviour
 			Renderer prefabRenderer = scrollBlockObject.GetComponent<Renderer>();
 			Vector3 blockSize = prefabRenderer.bounds.size;
 
-
+			Vector3 createPosition = blockPopPoint.position + playerOffset;
 			//before_block_create_count個ブロックを並べてblockPopPointを基準に配置
 			for (int i = 0; i < before_block_create_count; i++)
 			{
-				Vector3 createPosition = blockPopPoint.position +
-										 playerOffset;
-				CreateBlock(createPosition);
+				if (i == 0)
+				{
+					// 最初の1個 → プレイヤーの真下
+					Vector3 firstPos = blockPopPoint.position　+playerOffset;
+					CreateBlock(firstPos);
+				}
+				else
+				{
+					//2個目以降は直前のブロックのサイズ分先方に並べる
+					Bounds lastBounds = beforeBlockRender.bounds;
+					Vector3 nextPosition = lastBounds.center + blockMoveForward.normalized * lastBounds.size.z;
+					CreateBlock(createPosition);
+				}
+				
 			}
 		}
 	}
