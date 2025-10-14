@@ -18,6 +18,7 @@ public class EnemyGenerate : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+		Debug.Log($"Trigger entered by: {other.name}");
 		if (other.CompareTag("Player"))
 		{
 			//プレイヤーの前方、上に生成

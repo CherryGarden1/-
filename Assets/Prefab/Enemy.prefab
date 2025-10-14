@@ -106,7 +106,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -138,8 +138,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 4852853009155374842, guid: 51b02180a4cbc2548a732ba7dc373477, type: 3}
-  fallSpeed: 5
-  moveSpeed: 3
+  fallSpeed: 30
+  moveSpeed: 40
 --- !u!114 &2877722266510211582
 MonoBehaviour:
   m_ObjectHideFlags: 0
