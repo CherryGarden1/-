@@ -236,8 +236,8 @@ Transform:
   m_GameObject: {fileID: 4576763717078018480}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 183.44357, y: 45.6, z: 634}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 183.44357, y: 45.6, z: 239.7}
+  m_LocalScale: {x: 1, y: 1, z: 3.5722}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5851573266602398381}
@@ -330,5 +330,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyPrefabs:
   - {fileID: 475714075055116346, guid: 59b9be558d62a0a4396bddfa3b26a367, type: 3}
-  SpawnDistanse: 500
-  SpawnHeight: 150
+  SpawnDistanse: 100
+  SpawnHeight: 50

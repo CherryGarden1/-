@@ -21,9 +21,12 @@ public class EnemyGenerate : MonoBehaviour
 		Transform Player = GameObject.Find("playerTest").transform;
 		if (other.CompareTag("Player"))
 		{
+
+
+	
 			Debug.Log("Player detected"); 
 			//プレイヤーの前方、上に生成
-			Vector3 SpawnPos = Player.position + Player.forward * SpawnDistanse;
+			Vector3 SpawnPos = Player.position + Vector3.forward * SpawnDistanse;
 			SpawnPos.y += SpawnHeight;
 
 		GenerateEnemy(SpawnPos);
