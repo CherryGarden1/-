@@ -3,8 +3,7 @@ using UnityEngine;
 public class EnemyGenerate : MonoBehaviour
 {
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
-	[SerializeField]
-	private Transform Player;//プレイヤーの
+	
 	[SerializeField]
 	private GameObject[] EnemyPrefabs;//素材指定
 	[SerializeField]
@@ -19,8 +18,10 @@ public class EnemyGenerate : MonoBehaviour
 	private void OnTriggerEnter(Collider other)
 	{
 		Debug.Log($"Trigger entered by: {other.name}");
+		Transform Player = GameObject.Find("playerTest").transform;
 		if (other.CompareTag("Player"))
 		{
+			Debug.Log("Player detected"); 
 			//プレイヤーの前方、上に生成
 			Vector3 SpawnPos = Player.position + Player.forward * SpawnDistanse;
 			SpawnPos.y += SpawnHeight;

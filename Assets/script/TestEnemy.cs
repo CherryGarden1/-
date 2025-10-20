@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class TestEnemy : MonoBehaviour
 {
-	public Transform target;   // プレイヤー
 	public float fallSpeed = 5f; // 落下スピード
 	public float moveSpeed = 3f; // プレイヤー追跡スピード
 
@@ -10,6 +9,7 @@ public class TestEnemy : MonoBehaviour
 
 	private void Update()
 	{
+		Transform target = GameObject.Find("playerTest").transform;
 		if (!hasLanded)
 		{
 			// 下に移動
@@ -19,18 +19,24 @@ public class TestEnemy : MonoBehaviour
 			if (transform.position.y <= 0.5f) // ← 地面の高さに合わせる
 			{
 				hasLanded = true;
-				Debug.Log("true2");
+				Debug.Log("tracking");
 			}
-			Debug.Log("true1");
+	
 		}
 		else
 		{
+
 			// プレイヤーに向かって移動
 			if (target != null)
 			{
-				Vector3 direction = (target.position - transform.position).normalized;
+
+				Vector3 direction = target.position - transform.position;
+				// Y軸を固定（上下移動を防ぐ）
+				direction.y = 0;
+
+				direction.Normalize();
 				transform.position += direction * moveSpeed * Time.deltaTime;
-				Debug.Log("else1");
+				Debug.Log("chase");
 
 			}
 		}
