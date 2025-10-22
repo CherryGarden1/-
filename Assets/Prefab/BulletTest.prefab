@@ -133,9 +133,9 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &4672074830095018737
 MonoBehaviour:
@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8951e8503611941b823b537f59e5b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 300
+  bulletSpeed: 200
   rb: {fileID: 8857875038754289768}
-  damage: 1
+  damage: 5
+  FirePoint: {fileID: 0}

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour 
+public class Bullet : MonoBehaviour
 {
 	[SerializeField]
 	private float bulletSpeed;
@@ -8,12 +8,15 @@ public class Bullet : MonoBehaviour
 	private Rigidbody rb;
 	[SerializeField]
 	private int damage = 1;
-
+	[SerializeField]
+	GameObject FirePoint;
 	void Start()
 	{
 		// î≠éÀï˚å¸ÇÕê∂ê¨Ç≥ÇÍÇΩÇ∆Ç´ÇÃ forward
 		if (rb != null)
 		{
+		
+
 			rb.linearVelocity = transform.forward * bulletSpeed; // Unity 6ån
 																 // rb.velocity = transform.forward * bulletSpeed;   // Unity 2023à»ëO
 		}
@@ -38,4 +41,4 @@ public class Bullet : MonoBehaviour
 			Destroy(gameObject);
 		}
 	}
-	}
+}

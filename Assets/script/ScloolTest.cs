@@ -77,7 +77,7 @@ public class ScloolTest : MonoBehaviour
 
 	private void OnNextStage()
 	{
-		Debug.Log("Hello");
+		Debug.Log("NextStage");
 		// ÅŒã‚É¶¬‚µ‚½ƒuƒƒbƒN‚ÌBounds‚ğæ“¾
 		Bounds lastBounds = beforeBlockRender.bounds;
 
