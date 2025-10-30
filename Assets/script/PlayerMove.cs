@@ -7,6 +7,10 @@ public class PlayerMove : MonoBehaviour
 	private float speed;
 	[SerializeField]
 	private float scrollSpeed;
+	//最後にいた位置
+	public　Vector3 lastPosition;
+	//他で引っ張るよう
+	public Vector3 currentVelocity { get; private set; }
 	//リジットボディの確認
 	Rigidbody rb;
 	//アニメーションのコンポーネントの確認
@@ -32,5 +36,9 @@ public class PlayerMove : MonoBehaviour
 		bool Run = y!=0 || x!=0;
 		// 移動適用
 		rb.MovePosition(rb.position + movement * Time.deltaTime);
+
+		// 現在の速度ベクトルを計算
+		currentVelocity = (transform.position - lastPosition) / Time.deltaTime;
+		lastPosition = transform.position;
 	}
 }

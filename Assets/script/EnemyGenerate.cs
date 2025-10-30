@@ -13,7 +13,7 @@ public class EnemyGenerate : MonoBehaviour
 
 	public event System.Action Generate;
 
-	private int currentIndex = 0; // どの敵を出すか管理
+	private static int currentIndex = 0; // どの敵を出すか管理
 
 	private void OnTriggerEnter(Collider other)
 	{
@@ -46,5 +46,6 @@ public class EnemyGenerate : MonoBehaviour
 
 		// 次の敵に進める（最後までいったら最初に戻る）
 		currentIndex = (currentIndex + 1) % EnemyPrefabs.Length;
+		Debug.Log($"Spawned enemy #{currentIndex}");
 	}
 }
