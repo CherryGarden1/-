@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 6792380903823978625}
   - component: {fileID: 8114427055699678053}
   - component: {fileID: 887459988375386053}
+  - component: {fileID: 5252571125982482696}
   m_Layer: 0
   m_Name: EnemyTrigger
   m_TagString: Player
@@ -334,3 +335,22 @@ MonoBehaviour:
   - {fileID: 475714075055116346, guid: 59b9be558d62a0a4396bddfa3b26a367, type: 3}
   SpawnDistanse: 100
   SpawnHeight: 50
+--- !u!114 &5252571125982482696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4576763717078018480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f164b33fc6bde864fa712ddafa2bb3f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 0}
+  formationRows: 2
+  formationCols: 3
+  spacing: 5
+  moveSpeed: 10
+  waveAmplitude: 2
+  waveFrequency: 2
