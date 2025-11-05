@@ -15,10 +15,9 @@ GameObject:
   - component: {fileID: 1561351367399282510}
   - component: {fileID: -7954394394122332428}
   - component: {fileID: 2258737974751501126}
-  - component: {fileID: 5386287917715018213}
   m_Layer: 0
   m_Name: TutrialEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 3, z: 50}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -129,7 +128,7 @@ MonoBehaviour:
   fallSpeed: 5
   frontOffset: 20
   radius: 10
-  rotateSpeed: 1
+  rotateSpeed: 0.5
   player: {fileID: 0}
 --- !u!114 &-7954394394122332428
 MonoBehaviour:
@@ -143,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93dbd496567013040af71a227e18da39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  hp: 2
 --- !u!54 &2258737974751501126
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -171,22 +170,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5386287917715018213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1046270818250376779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f164b33fc6bde864fa712ddafa2bb3f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 1046270818250376779}
-  formationRows: 2
-  formationCols: 3
-  spacing: 5
-  moveSpeed: 10
-  waveAmplitude: 2
-  waveFrequency: 2

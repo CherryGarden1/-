@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-	//‘¬“x‚Ìİ’è
+	//¶‰EˆÚ“®‘¬“x‚Ìİ’è
 	[SerializeField]
 	private float speed;
 	[SerializeField]
