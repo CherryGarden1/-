@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour
 {
 	public int hp = 10;
+	public int exHp = 50;
 	public GameObject explosionPrefab;
 	public virtual void TakeDamage(int damage)
 	{

@@ -5,7 +5,8 @@ public class AimAndShot : MonoBehaviour
 	[Header("References")]
 	public Transform shipTransform; //自機
 	public RectTransform crosshairUI;      // UI上のクロスヘア
-	public GameObject bulletPrefab;　//弾素材
+	public GameObject bulletPrefab; //弾素材
+	public GameObject bulustPrefab;
 	public Transform firePoint; //発射位置
 	public Camera mainCamera;              // メインカメラ
 
@@ -52,6 +53,11 @@ public class AimAndShot : MonoBehaviour
 		{
 			ShootAt(targetPos);
 		}
+		if (Input.GetKeyUp(KeyCode.Z))
+		{
+			ShootAtEx(targetPos);
+		}
+
 	}
 
 	void ShootAt(Vector3 target)
@@ -79,4 +85,30 @@ public class AimAndShot : MonoBehaviour
 			//rb.linearVelocity = velocityDir * 200f;
 		}
 	}
+	void ShootAtEx(Vector3 target)
+	{
+		//Vector3 screenPos = crosshairUI.position;
+		//Ray ray = mainCamera.ScreenPointToRay(screenPos);
+		//Vector3 targetPos;
+		//
+		//if (Physics.Raycast(ray, out RaycastHit hit, 1000f))
+		//	targetPos = hit.point;
+		//else
+		//	targetPos = ray.origin + ray.direction * 1000f;
+		//弾を生成
+		GameObject b = Instantiate(bulustPrefab, firePoint.position, firePoint.rotation);
+
+		Rigidbody rb = b.GetComponent<Rigidbody>();
+		if (rb != null)
+		{
+			rb.useGravity = false; // 重力を無効化
+
+			//クロスヘアに向けて飛ばす
+			Vector3 velocityDir = (target - firePoint.position).normalized;
+
+			rb.linearVelocity = velocityDir * 100f;
+			//rb.linearVelocity = velocityDir * 200f;
+		}
+	}
 }
+
