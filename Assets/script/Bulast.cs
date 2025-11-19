@@ -8,7 +8,7 @@ public class Bulast : MonoBehaviour
 	[SerializeField]
 	private Rigidbody rb;
 	[SerializeField]
-	GameObject FirePoint;
+	GameObject firePoint;
 	public float explosionRadius = 10f;  // 最初の爆発範囲
 	public float chainDelay = 0.2f;      // 連鎖までの遅延
 	public int maxChains = 5;            // 最大連鎖回数
@@ -16,6 +16,9 @@ public class Bulast : MonoBehaviour
 
 	// 連鎖済み敵を記録して二重処理を防ぐ
 	private HashSet<Transform> explodedEnemies = new HashSet<Transform>();
+
+	[SerializeField]
+	GameObject explosionPrefab;
 
 	void Start()
 	{
@@ -46,8 +49,20 @@ public class Bulast : MonoBehaviour
 	{
 		if (chainLevel > maxChains) yield break;
 
+		// すでに爆発済みなら飛ばす
+		if (explodedEnemies.Contains(originEnemy)) yield break;
+		explodedEnemies.Add(originEnemy);
+
+
+		// 敵が死んで transform が null になる前に座標だけ確保
+		Vector3 originPos = originEnemy.position;
+
+
 		// 爆発エフェクト
-		Instantiate(Resources.Load<GameObject>("ExplosionEffect"), originEnemy.position, Quaternion.identity);
+		if (explosionPrefab != null)
+		{
+			Instantiate(explosionPrefab, originPos, Quaternion.identity);
+		}
 
 		// 敵を破壊 or ダメージ
 		EnemyBase enemy = originEnemy.GetComponent<EnemyBase>();
@@ -56,8 +71,11 @@ public class Bulast : MonoBehaviour
 			enemy.TakeDamage(Exdamage);
 		}
 
+		yield return new WaitForSeconds(chainDelay);
+
 		// 次の連鎖を探索
-		Collider[] hits = Physics.OverlapSphere(originEnemy.position, explosionRadius);
+		int enemyMask = LayerMask.GetMask("Enemy");
+		Collider[] hits = Physics.OverlapSphere(originPos, explosionRadius,enemyMask);
 		foreach (Collider hit in hits)
 		{
 			if (hit.CompareTag("Enemy") && hit.transform != originEnemy)
