@@ -124,11 +124,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 100
   rb: {fileID: 5064974984512171628}
-  FirePoint: {fileID: 0}
+  firePoint: {fileID: 0}
   explosionRadius: 10
   chainDelay: 0.2
   maxChains: 5
   Exdamage: 50
+  prefab: {fileID: 0}
+  BlastBulletTest: {fileID: 4061187131486897846}
+  explosionPrefab: {fileID: 8616061482856442725, guid: 6102d8082ed66bb44abbde64d65d0d09, type: 3}
 --- !u!54 &5064974984512171628
 Rigidbody:
   m_ObjectHideFlags: 0

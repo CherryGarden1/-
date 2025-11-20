@@ -37,52 +37,16 @@ public class Bulast : MonoBehaviour
 	}
 	private void OnTriggerEnter(Collider other)
 	{
-		if(other.CompareTag("Enemy"))
+		if (other.CompareTag("Enemy"))
 		{
-			//最初の敵を爆破する
-			StartCoroutine(TriggerChainExplosion(other.transform, 0));
+			EnemyBase enemy = other.GetComponent<EnemyBase>();
+			if (enemy)
+			{
+				enemy.TakeDamage(Exdamage); // 最初の爆発だけ起動
+			}
+
 			Destroy(gameObject);
 		}
-	}
 
-	private IEnumerator TriggerChainExplosion(Transform originEnemy, int chainLevel)
-	{
-		if (chainLevel > maxChains) yield break;
-
-		// すでに爆発済みなら飛ばす
-		if (explodedEnemies.Contains(originEnemy)) yield break;
-		explodedEnemies.Add(originEnemy);
-
-
-		// 敵が死んで transform が null になる前に座標だけ確保
-		Vector3 originPos = originEnemy.position;
-
-
-		// 爆発エフェクト
-		if (explosionPrefab != null)
-		{
-			Instantiate(explosionPrefab, originPos, Quaternion.identity);
-		}
-
-		// 敵を破壊 or ダメージ
-		EnemyBase enemy = originEnemy.GetComponent<EnemyBase>();
-		if (enemy != null)
-		{
-			enemy.TakeDamage(Exdamage);
-		}
-
-		yield return new WaitForSeconds(chainDelay);
-
-		// 次の連鎖を探索
-		int enemyMask = LayerMask.GetMask("Enemy");
-		Collider[] hits = Physics.OverlapSphere(originPos, explosionRadius,enemyMask);
-		foreach (Collider hit in hits)
-		{
-			if (hit.CompareTag("Enemy") && hit.transform != originEnemy)
-			{
-				yield return new WaitForSeconds(chainDelay);
-				StartCoroutine(TriggerChainExplosion(hit.transform, chainLevel + 1));
-			}
-		}
 	}
 }
