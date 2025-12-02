@@ -37,12 +37,16 @@ public class Bulast : MonoBehaviour
 	}
 	private void OnTriggerEnter(Collider other)
 	{
+		Debug.Log($"Bullet hit:{other.name},tag = {other.name}");
 		if (other.CompareTag("Enemy"))
 		{
+			Debug.Log("Hit Enemy!");
 			EnemyBase enemy = other.GetComponent<EnemyBase>();
+			Debug.Log($"Enemy Base commponent:{(enemy!=null ? "found" : "null")}");
 			if (enemy)
 			{
 				enemy.TakeDamage(Exdamage); // Å‰‚Ì”š”­‚¾‚¯‹N“®
+				Debug.Log($"Called TakeDamege({Exdamage}) on {other.name}");
 			}
 
 			Destroy(gameObject);

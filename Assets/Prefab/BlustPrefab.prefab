@@ -104,7 +104,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -129,8 +129,6 @@ MonoBehaviour:
   chainDelay: 0.2
   maxChains: 5
   Exdamage: 50
-  prefab: {fileID: 0}
-  BlastBulletTest: {fileID: 4061187131486897846}
   explosionPrefab: {fileID: 8616061482856442725, guid: 6102d8082ed66bb44abbde64d65d0d09, type: 3}
 --- !u!54 &5064974984512171628
 Rigidbody:

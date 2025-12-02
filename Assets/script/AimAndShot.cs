@@ -27,7 +27,7 @@ public class AimAndShot : MonoBehaviour
 		if (Physics.Raycast(ray, out RaycastHit hit, 1000f))
 		{
 			targetPos = hit.point;
-			Debug.Log("Hit");
+			//Debug.Log("Hit");
 		}
 		else
 		{

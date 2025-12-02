@@ -7,16 +7,25 @@ public class EnemyBase : MonoBehaviour
 	//public int exHp = 50;
 	public static event Action<Vector3, EnemyBase> OnEnemyExploded;
 	public GameObject explosionPrefab;
-	public virtual void TakeDamage(int damage)
+	public virtual void TakeDamage(int damage, bool isBlustDamege = false)
 	{
 		hp -= damage;
 		if (hp <= 0)
 		{
-			Explode();
+			Die(isBlustDamege);
 		} 
 	}
 
 
+
+	private void Die(bool isBlustDamege)
+	{
+		if(isBlustDamege)
+		{
+			//˜A½”š”­‹N“®
+			GetComponent<ChainExplosion>()?.StartChain();
+		}
+	}
 
 	void Explode()
 	{

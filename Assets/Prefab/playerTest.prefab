@@ -200,10 +200,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipTransform: {fileID: 4852853009155374842}
   crosshairUI: {fileID: 0}
-  turnSpeed: 2
   bulletPrefab: {fileID: 9206141765489239994, guid: e59554088e2004e40a638798c8d163e2, type: 3}
+  bulustPrefab: {fileID: 0}
   firePoint: {fileID: 1696194840464331967}
   mainCamera: {fileID: 0}
+  turnSpeed: 2
 --- !u!1 &6974907815707786869
 GameObject:
   m_ObjectHideFlags: 0
