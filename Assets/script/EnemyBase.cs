@@ -5,6 +5,7 @@ public class EnemyBase : MonoBehaviour
 {
 	public int hp = 10;
 	//public int exHp = 50;
+	//BlastManagerが受け取るイベント　
 	public static event Action<Vector3, EnemyBase> OnEnemyExploded;
 	public GameObject explosionPrefab;
 	public virtual void TakeDamage(int damage, bool isBlustDamege = false)
@@ -20,11 +21,14 @@ public class EnemyBase : MonoBehaviour
 
 	private void Die(bool isBlustDamege)
 	{
+		Explode();
+
 		if(isBlustDamege)
 		{
 			//連鎖爆発起動
 			GetComponent<ChainExplosion>()?.StartChain();
 		}
+		Destroy(gameObject);
 	}
 
 	void Explode()
@@ -37,6 +41,6 @@ public class EnemyBase : MonoBehaviour
 		//イベント発火
 		OnEnemyExploded?.Invoke(transform.position,this);
 
-		Destroy(gameObject);
+		
 	}
 }

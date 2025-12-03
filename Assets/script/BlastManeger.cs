@@ -32,7 +32,10 @@ public class BlastManeger : MonoBehaviour
 
 	IEnumerator ChainRoutine(Vector3 originPos, int level)
 	{
-		if (level > maxChains) yield break;
+		if (level > maxChains)
+		{
+			exploded.Clear();//新しいチェイン開始時にリセ
+		}
 
 		yield return new WaitForSeconds(chainDelay);
 
