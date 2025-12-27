@@ -31,16 +31,16 @@ public class EnemyBase : MonoBehaviour
 		Destroy(gameObject);
 	}
 
-	void Explode()
+		void Explode()
 	{
 		if (explosionPrefab)
 		{ 
 			Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 		}
-
+	
 		//ƒCƒxƒ“ƒg”­‰Î
 		OnEnemyExploded?.Invoke(transform.position,this);
-
+	
 		
 	}
 }

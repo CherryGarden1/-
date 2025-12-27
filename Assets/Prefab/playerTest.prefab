@@ -98,8 +98,9 @@ GameObject:
   - component: {fileID: 4852853009155374842}
   - component: {fileID: 2913058547010421708}
   - component: {fileID: 4915540222673060417}
-  - component: {fileID: 3577873100781911035}
-  - component: {fileID: 1100590297682877992}
+  - component: {fileID: 2276413534251769959}
+  - component: {fileID: 3099583858434637831}
+  - component: {fileID: 2406812279280676376}
   m_Layer: 0
   m_Name: playerTest
   m_TagString: Player
@@ -171,7 +172,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3577873100781911035
+--- !u!114 &2276413534251769959
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,13 +181,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 5703364356962541602}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfe7e67f7ffb61f4094bd00f65597763, type: 3}
+  m_Script: {fileID: 11500000, guid: b51b185de6b78374288f6342e274bf1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  scrollSpeed: 10
-  lastPosition: {x: 0, y: 0, z: 0}
---- !u!114 &1100590297682877992
+  bulletSpeed: 0
+  rb: {fileID: 0}
+  firePoint: {fileID: 0}
+  explosionRadius: 10
+  chainDelay: 0.2
+  maxChains: 5
+  Exdamage: 50
+  explosionPrefab: {fileID: 0}
+--- !u!114 &3099583858434637831
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,13 +204,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2900562fc3747e746ae3737cee6607c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipTransform: {fileID: 4852853009155374842}
+  shipTransform: {fileID: 0}
   crosshairUI: {fileID: 0}
-  bulletPrefab: {fileID: 9206141765489239994, guid: e59554088e2004e40a638798c8d163e2, type: 3}
+  bulletPrefab: {fileID: 0}
   bulustPrefab: {fileID: 0}
-  firePoint: {fileID: 1696194840464331967}
+  firePoint: {fileID: 0}
   mainCamera: {fileID: 0}
   turnSpeed: 2
+--- !u!114 &2406812279280676376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5703364356962541602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe7e67f7ffb61f4094bd00f65597763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  scrollSpeed: 0
+  lastPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &6974907815707786869
 GameObject:
   m_ObjectHideFlags: 0
